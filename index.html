@@ -9,236 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
         rel="stylesheet">
-    <style>
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #1a0f1a 0%, #2d1b2d 50%, #1f141f 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .serif {
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .glass-strong {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .glow {
-            box-shadow: 0 0 60px rgba(139, 90, 108, 0.15);
-        }
-
-        .text-glow {
-            text-shadow: 0 0 40px rgba(255, 200, 200, 0.3);
-        }
-
-        .fade-enter {
-            opacity: 0;
-            transform: translateY(20px);
-            filter: blur(10px);
-        }
-
-        .fade-enter-active {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-exit {
-            opacity: 1;
-            filter: blur(0);
-        }
-
-        .fade-exit-active {
-            opacity: 0;
-            filter: blur(20px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .emotion-btn {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .emotion-btn:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .emotion-btn.active {
-            background: rgba(139, 90, 108, 0.3);
-            border-color: rgba(139, 90, 108, 0.5);
-        }
-
-        .hidden-message {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.6s ease;
-        }
-
-        .hidden-message.revealed {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .heartbeat {
-            animation: heartbeat 4s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-
-            50% {
-                transform: scale(1.05);
-                opacity: 1;
-            }
-        }
-
-        .float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #e8d5d5 0%, #c9a6a6 50%, #e8d5d5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .input-glow:focus {
-            box-shadow: 0 0 30px rgba(139, 90, 108, 0.2);
-        }
-
-        #particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: drift 20s infinite linear;
-        }
-
-        @keyframes drift {
-            from {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 0.3;
-            }
-
-            90% {
-                opacity: 0.3;
-            }
-
-            to {
-                transform: translateY(-10vh) translateX(50px);
-                opacity: 0;
-            }
-        }
-
-        .shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            background-size: 200% 100%;
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-
-            100% {
-                background-position: 200% 0;
-            }
-        }
-
-        /* New Love Burst Animations */
-        @keyframes loveRise {
-            0% {
-                transform: translateY(0) scale(0) rotate(0);
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 1;
-                transform: translateY(-20vh) scale(1.2) rotate(15deg);
-            }
-
-            100% {
-                transform: translateY(-120vh) scale(0.8) rotate(-15deg);
-                opacity: 0;
-            }
-        }
-
-        .love-burst-item {
-            position: fixed;
-            pointer-events: none;
-            z-index: 100;
-            filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.4));
-            animation: loveRise 5s linear forwards;
-        }
-
-        .screen-pulse {
-            animation: screenGlow 5s ease-out forwards;
-        }
-
-        @keyframes screenGlow {
-
-            0%,
-            100% {
-                background: linear-gradient(135deg, #1a0f1a 0%, #2d1b2d 50%, #1f141f 100%);
-            }
-
-            20%,
-            50% {
-                background: linear-gradient(135deg, #2a152a 0%, #3d1b3d 50%, #2a152a 100%);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="text-gray-200 antialiased selection:bg-rose-900 selection:text-white">
@@ -246,11 +17,8 @@
     <!-- Ambient Particles -->
     <div id="particles"></div>
 
-    <!-- Audio Element (Royalty-free ambient piano from Pixabay) -->
     <audio id="ambientAudio" loop preload="auto">
-        <source
-            src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-100-bpm-121529.mp3"
-            type="audio/mpeg">
+        <source src="song1.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Entry Screen -->
@@ -307,7 +75,7 @@
             </svg>
         </button>
 
-        <div class="min-h-screen flex flex-col items-center justify-center p-6 md:p-12">
+        <div class="min-h-screen flex flex-col items-center justify-start p-6 md:p-12 pt-20">
 
             <!-- Header -->
             <div class="text-center mb-12 fade-enter" id="welcomeSection">
@@ -320,7 +88,7 @@
             <div class="glass rounded-3xl p-8 md:p-12 max-w-2xl w-full mb-12 glow fade-enter" id="dailyMessage"
                 style="transition-delay: 0.2s">
                 <div class="flex items-center justify-between mb-6">
-                    <span class="text-rose-300/60 text-xs tracking-widest uppercase">Today's Thought</span>
+                    <span class="text-rose-300/60 text-xs tracking-widest uppercase">Daily Reminder</span>
                     <span class="text-gray-600 text-xs" id="currentDate"></span>
                 </div>
                 <p class="serif text-xl md:text-2xl text-gray-200 leading-relaxed italic mb-6" id="messageText"></p>
@@ -338,28 +106,28 @@
 
             <!-- Emotion Selector -->
             <div class="w-full max-w-2xl mb-12 fade-enter" id="emotionSection" style="transition-delay: 0.4s">
-                <p class="text-center text-gray-500 text-sm mb-6 tracking-wide">How are you feeling right now?</p>
+                <p class="text-center text-gray-500 text-sm mb-6 tracking-wide">Are you okay baby?</p>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <button onclick="selectEmotion('sad')"
                         class="emotion-btn glass rounded-2xl p-4 text-center border border-white/5" data-emotion="sad">
-                        <div class="text-2xl mb-2">😢</div>
+                        <img src="sad-face.png" alt="Sad" class="w-8 h-8 mx-auto mb-2 object-contain">
                         <span class="text-sm text-gray-300">I'm Sad</span>
                     </button>
                     <button onclick="selectEmotion('overthinking')"
                         class="emotion-btn glass rounded-2xl p-4 text-center border border-white/5"
                         data-emotion="overthinking">
-                        <div class="text-2xl mb-2">🌀</div>
+                        <img src="sad-face.png" alt="Overthinking" class="w-8 h-8 mx-auto mb-2 object-contain">
                         <span class="text-sm text-gray-300">Overthinking</span>
                     </button>
                     <button onclick="selectEmotion('anxious')"
                         class="emotion-btn glass rounded-2xl p-4 text-center border border-white/5"
                         data-emotion="anxious">
-                        <div class="text-2xl mb-2">😰</div>
+                        <img src="sad-face.png" alt="Anxious" class="w-8 h-8 mx-auto mb-2 object-contain">
                         <span class="text-sm text-gray-300">Feel Anxious</span>
                     </button>
                     <button onclick="selectEmotion('lost')"
                         class="emotion-btn glass rounded-2xl p-4 text-center border border-white/5" data-emotion="lost">
-                        <div class="text-2xl mb-2">🌫️</div>
+                        <img src="sad-face.png" alt="Lost" class="w-8 h-8 mx-auto mb-2 object-contain">
                         <span class="text-sm text-gray-300">I Don't Know</span>
                     </button>
                 </div>
@@ -398,6 +166,150 @@
                 </div>
             </div>
 
+            <!-- Gallery Section -->
+            <div class="w-full max-w-4xl mb-12 fade-enter-active" id="gallerySection">
+                <div class="text-center mb-8">
+                    <p class="text-rose-300/60 text-[10px] tracking-[0.4em] uppercase mb-2">The way I see you</p>
+                    <h2 class="serif text-3xl md:text-4xl text-gray-100 text-glow">and why I can’t stop looking</h2>
+                    <div
+                        class="w-16 h-px bg-gradient-to-r from-transparent via-rose-900/30 to-transparent mx-auto mt-4">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 px-2">
+                    <!-- Photo 1 -->
+                    <div
+                        class="group relative aspect-[4/5] glass rounded-2xl overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 hover:scale-[1.03] hover:-translate-y-2">
+                        <img src="gambar-1.png"
+                            class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-1000"
+                            alt="Memory 1">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-rose-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700">
+                        </div>
+                        <div
+                            class="absolute bottom-4 left-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                            <p class="serif text-white/90 italic text-sm">huwaaa too prettyy</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div
+                        class="group relative aspect-[4/5] glass rounded-2xl overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 hover:scale-[1.03] hover:-translate-y-2 lg:mt-6">
+                        <img src="gambar-2.png"
+                            class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-1000"
+                            alt="Memory 2">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-rose-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700">
+                        </div>
+                        <div
+                            class="absolute bottom-4 left-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                            <p class="serif text-white/90 italic text-sm">Pretty gile, I'm so luckyyy</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 3 -->
+                    <div
+                        class="group relative aspect-[4/5] glass rounded-2xl overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 hover:scale-[1.03] hover:-translate-y-2">
+                        <img src="gambar-3.png"
+                            class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-1000"
+                            alt="Memory 3">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-rose-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700">
+                        </div>
+                        <div
+                            class="absolute bottom-4 left-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                            <p class="serif text-white/90 italic text-sm">Baby saya looking so fine</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 4 -->
+                    <div
+                        class="group relative aspect-[4/5] glass rounded-2xl overflow-hidden cursor-pointer shadow-2xl transition-all duration-700 hover:scale-[1.03] hover:-translate-y-2 lg:mt-6">
+                        <img src="gambar-4.png"
+                            class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-1000"
+                            alt="Memory 4">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-rose-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700">
+                        </div>
+                        <div
+                            class="absolute bottom-4 left-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                            <p class="serif text-white/90 italic text-sm">Shee's sooo prettyy huwaa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Games Section -->
+            <div class="w-full max-w-2xl mb-12 fade-enter" id="gamesSection" style="transition-delay: 0.6s">
+                <div class="text-center mb-8">
+                    <p class="text-rose-300/60 text-[10px] tracking-[0.4em] uppercase mb-2">Babyy, jom main</p>
+                    <h2 class="serif text-3xl md:text-4xl text-gray-100 text-glow">Games</h2>
+                    <div
+                        class="w-16 h-px bg-gradient-to-r from-transparent via-rose-900/30 to-transparent mx-auto mt-4">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 px-2" id="gamesList">
+                    <!-- Game 1 -->
+                    <button onclick="openTicTacToe()"
+                        class="game-item glass rounded-2xl p-6 text-center border border-white/5 hover:bg-rose-900/20 transition-all duration-300 hover:scale-[1.02] group">
+                        <div
+                            class="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-rose-950 to-purple-950 flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform">
+                            <svg class="w-6 h-6 text-rose-300/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <p class="serif text-gray-200 text-lg tracking-wide font-medium mb-1">Game 1</p>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest">come baby lawan saya</p>
+                    </button>
+
+                    <!-- Game 2 -->
+                    <button onclick="openLoveGame()"
+                        class="game-item glass rounded-2xl p-6 text-center border border-white/5 hover:bg-rose-900/20 transition-all duration-300 hover:scale-[1.02] group">
+                        <div
+                            class="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-rose-950 to-purple-950 flex items-center justify-center mb-4 group-hover:-rotate-12 transition-transform">
+                            <svg class="w-6 h-6 text-rose-300/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                            </svg>
+                        </div>
+                        <p class="serif text-gray-200 text-lg tracking-wide font-medium mb-1">Game 2</p>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest">game ni senang sikit</p>
+                    </button>
+
+                    <!-- Game 3 -->
+                    <!-- <button
+                        class="game-item glass rounded-2xl p-6 text-center border border-white/5 hover:bg-rose-900/20 transition-all duration-300 hover:scale-[1.02] group">
+                        <div
+                            class="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-rose-950 to-purple-950 flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform">
+                            <svg class="w-6 h-6 text-rose-300/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <p class="serif text-gray-200 text-lg tracking-wide font-medium mb-1">Game 3</p>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest">Coming Soon</p>
+                    </button> -->
+
+                    <!-- Game 4 -->
+                    <!-- <button
+                        class="game-item glass rounded-2xl p-6 text-center border border-white/5 hover:bg-rose-900/20 transition-all duration-300 hover:scale-[1.02] group">
+                        <div
+                            class="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-rose-950 to-purple-950 flex items-center justify-center mb-4 group-hover:-rotate-12 transition-transform">
+                            <svg class="w-6 h-6 text-rose-300/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                        </div>
+                        <p class="serif text-gray-200 text-lg tracking-wide font-medium mb-1">Game 4</p>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest">Coming Soon</p>
+                    </button> -->
+                </div>
+            </div>
+
             <!-- Hidden Heart Interaction -->
             <div class="relative mb-12 fade-enter" id="heartSection" style="transition-delay: 0.6s">
                 <button onclick="revealHiddenMessage()" id="heartButton"
@@ -423,6 +335,20 @@
                 </div>
             </div>
 
+            <!-- Special "Cuba Tekan" Section -->
+            <div class="w-full max-w-2xl mb-24 fade-enter text-center" id="specialSection"
+                style="transition-delay: 0.7s">
+                <button onclick="enterSpecialPage()"
+                    class="group relative px-10 py-5 glass rounded-full overflow-hidden transition-all duration-700 hover:scale-110 hover:border-rose-300/30">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-rose-900/10 to-purple-900/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <span
+                        class="serif text-xl md:text-2xl text-rose-300/80 tracking-[0.2em] group-hover:text-rose-200 transition-colors">babyy
+                        cuba tekan</span>
+                </button>
+            </div>
+
             <!-- Footer -->
             <div class="text-center fade-enter" style="transition-delay: 0.8s">
                 <p class="text-gray-600 text-xs tracking-widest">This space is yours baby sayang · Baby datang je
@@ -432,361 +358,458 @@
         </div>
     </div>
 
-    <script>
-        // Configuration - Set the two allowed names here
-        const ALLOWED_NAMES = ['nurul afifah bt mahadi', 'Nurul Afifah binti Mahadi', 'baby sayang princess'];
-        // Daily messages
-        const DAILY_MESSAGES_ORIGINAL = [
-            "Some days are heavy, and that's okay. You don't have to carry it all at once.",
-            "The quiet moments are where strength gathers. Rest is not giving up.",
-            "You have survived every hard day so far. That is no small thing.",
-            "There is a softness in you that the world needs. Don't hide it.",
-            "Even the moon goes through phases. Be patient with yourself.",
-            "You are allowed to take up space. You are allowed to need things.",
-            "The world is better with you in it. In case you forgot.",
-            "Healing isn't linear. Some days you'll float, some days you'll wade. Both are progress."
-        ];
+    <!-- Special New Page Layer -->
+    <div id="specialPage" onclick="handleSpecialPageClick(event)"
+        class="fixed inset-0 z-[60] opacity-0 pointer-events-none flex flex-col items-center justify-center p-6 bg-black/40 backdrop-blur-sm cursor-pointer">
+        <div id="specialContent" class="text-center max-w-2xl w-full">
+            <h2 id="specialMessage"
+                class="serif text-4xl md:text-5xl lg:text-6xl text-gray-100 text-glow mb-12 opacity-0 transform translate-y-8 transition-all duration-[2000ms]">
+                I have something for you
+            </h2>
+            
+            <h2 id="specialLoveHeadline"
+                class="fixed top-24 left-0 w-full serif text-3xl md:text-5xl lg:text-6xl text-rose-200 text-glow opacity-0 transform -translate-y-4 transition-all duration-[3000ms] pointer-events-none z-50">
+                I love you so much ❤️
+            </h2>
 
-        // Shuffle function (Fisher-Yates)
-        function shuffleArray(array) {
-            const shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
-        }
+            <button id="giftButton" onclick="revealFlower(event)"
+                class="opacity-0 transform translate-y-8 transition-all duration-[2000ms] delay-700 px-12 py-4 glass rounded-full serif text-xl text-rose-300/80 hover:scale-110 hover:bg-rose-900/20 border border-white/10 tracking-widest">
+                Click me
+            </button>
 
-        let DAILY_MESSAGES = shuffleArray(DAILY_MESSAGES_ORIGINAL);
-        let currentMessageIndex = 0;
+            <div id="flowerAnimation" class="flower-container not-loaded">
+                <div class="flowers">
+                    <div class="flower flower--1">
+                        <div class="flower__leafs flower__leafs--1">
+                            <div class="flower__leaf flower__leaf--1"></div>
+                            <div class="flower__leaf flower__leaf--2"></div>
+                            <div class="flower__leaf flower__leaf--3"></div>
+                            <div class="flower__leaf flower__leaf--4"></div>
+                            <div class="flower__white-circle"></div>
+                            <div class="flower__light flower__light--1"></div>
+                            <div class="flower__light flower__light--2"></div>
+                            <div class="flower__light flower__light--3"></div>
+                            <div class="flower__light flower__light--4"></div>
+                            <div class="flower__light flower__light--5"></div>
+                            <div class="flower__light flower__light--6"></div>
+                            <div class="flower__light flower__light--7"></div>
+                            <div class="flower__light flower__light--8"></div>
+                        </div>
+                        <div class="flower__line">
+                            <div class="flower__line__leaf flower__line__leaf--1"></div>
+                            <div class="flower__line__leaf flower__line__leaf--2"></div>
+                            <div class="flower__line__leaf flower__line__leaf--3"></div>
+                            <div class="flower__line__leaf flower__line__leaf--4"></div>
+                            <div class="flower__line__leaf flower__line__leaf--5"></div>
+                            <div class="flower__line__leaf flower__line__leaf--6"></div>
+                        </div>
+                    </div>
 
-        // Emotion-based content with multiple quotes
-        const EMOTION_CONTENT = {
-            sad: {
-                quotes: [
-                    "I know it feels like too much right now. The sadness is real, and it matters. But you don't have to go through this alone. Let yourself feel it, and remember—this moment will pass. You've survived every difficult day before this one.",
-                    "It’s okay to not be okay right now. Let the tears fall if they need to. You don't have to be strong all the time. This sadness is just a heavy cloud passing through, and the sun is still behind it.",
-                    "The weight of today might feel heavy, but your heart is resilient. Be gentle with yourself, sayang. You're doing the best you can, and that is more than enough.",
-                    "Sadness is like the tide; it comes and goes. But you are the ocean—vast, beautiful, and deeper than any single wave of sorrow."
-                ],
-                tag: "Your sadness is valid and temporary"
-            },
-            overthinking: {
-                quotes: [
-                    "Your mind is working overtime, replaying moments, what-ifs spiraling into more what-ifs. But here's the truth: you can't control the past or predict the future. All you have is this breath, right now. Come back to it.",
-                    "Stop, take a breath. The scenarios your mind is creating haven't happened yet. You're trying to solve problems that don't even exist. Let's just focus on this moment, right here.",
-                    "The 'what-ifs' are just ghosts. They have no power unless you give it to them. Your thoughts are like clouds; watch them pass, but don't try to catch them.",
-                    "You are not your thoughts. You are the observer of your thoughts. Take a step back and see how much energy you're spending on things that won't matter soon."
-                ],
-                tag: "Your thoughts are not the truth"
-            },
-            anxious: {
-                quotes: [
-                    "The worry feels so real, doesn't it? Like it's happening right now, even when it isn't. But you are safe in this moment. Your breathing is steady. Your heart beats strong. You are okay, right now. Hold onto that.",
-                    "Anxiety is just a physical sensation, like a fast heartbeat or a tight chest. It's uncomfortable, but it's not dangerous. You are stronger than this feeling. Breathe in slowly...",
-                    "Try to find five things you can see, four things you can touch, three things you can hear. Ground yourself here. The future hasn't arrived yet, and you are safe in the present.",
-                    "Peace isn't the absence of anxiety; it's the ability to find your center even when it's there. I'm right here with you."
-                ],
-                tag: "Anxiety is a liar; you are safe"
-            },
-            lost: {
-                quotes: [
-                    "Not knowing is terrifying, and that's okay to admit. But being lost doesn't mean you're broken. Sometimes we need to wander a little to find where we're meant to be. Trust yourself. The path will reveal itself.",
-                    "It's okay to not have a plan. Life isn't a race, and you aren't falling behind. You're just in a chapter of growth that feels a bit messy. Keep walking, one step at a time.",
-                    "Even when you can't see the destination, you're still moving. Trust the timing of your life. You are exactly where you need to be to learn what you need to know next.",
-                    "Lost is just another word for 'searching.' You haven't failed; you're just exploring the map. The right door will open when you're ready to walk through it."
-                ],
-                tag: "Being lost is part of being found"
-            }
-        };
+                    <div class="flower flower--2">
+                        <div class="flower__leafs flower__leafs--2">
+                            <div class="flower__leaf flower__leaf--1"></div>
+                            <div class="flower__leaf flower__leaf--2"></div>
+                            <div class="flower__leaf flower__leaf--3"></div>
+                            <div class="flower__leaf flower__leaf--4"></div>
+                            <div class="flower__white-circle"></div>
+                            <div class="flower__light flower__light--1"></div>
+                            <div class="flower__light flower__light--2"></div>
+                            <div class="flower__light flower__light--3"></div>
+                            <div class="flower__light flower__light--4"></div>
+                            <div class="flower__light flower__light--5"></div>
+                            <div class="flower__light flower__light--6"></div>
+                            <div class="flower__light flower__light--7"></div>
+                            <div class="flower__light flower__light--8"></div>
+                        </div>
+                        <div class="flower__line">
+                            <div class="flower__line__leaf flower__line__leaf--1"></div>
+                            <div class="flower__line__leaf flower__line__leaf--2"></div>
+                            <div class="flower__line__leaf flower__line__leaf--3"></div>
+                            <div class="flower__line__leaf flower__line__leaf--4"></div>
+                        </div>
+                    </div>
 
-        let lastQuoteIndices = {
-            sad: -1,
-            overthinking: -1,
-            anxious: -1,
-            lost: -1
-        };
+                    <div class="flower flower--3">
+                        <div class="flower__leafs flower__leafs--3">
+                            <div class="flower__leaf flower__leaf--1"></div>
+                            <div class="flower__leaf flower__leaf--2"></div>
+                            <div class="flower__leaf flower__leaf--3"></div>
+                            <div class="flower__leaf flower__leaf--4"></div>
+                            <div class="flower__white-circle"></div>
+                            <div class="flower__light flower__light--1"></div>
+                            <div class="flower__light flower__light--2"></div>
+                            <div class="flower__light flower__light--3"></div>
+                            <div class="flower__light flower__light--4"></div>
+                            <div class="flower__light flower__light--5"></div>
+                            <div class="flower__light flower__light--6"></div>
+                            <div class="flower__light flower__light--7"></div>
+                            <div class="flower__light flower__light--8"></div>
+                        </div>
+                        <div class="flower__line">
+                            <div class="flower__line__leaf flower__line__leaf--1"></div>
+                            <div class="flower__line__leaf flower__line__leaf--2"></div>
+                            <div class="flower__line__leaf flower__line__leaf--3"></div>
+                            <div class="flower__line__leaf flower__line__leaf--4"></div>
+                        </div>
+                    </div>
 
-        // Initialize particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                container.appendChild(particle);
-            }
-        }
+                    <div class="grow-ans" style="--d:1.2s">
+                        <div class="flower__g-long">
+                            <div class="flower__g-long__top"></div>
+                            <div class="flower__g-long__bottom"></div>
+                        </div>
+                    </div>
 
-        // Set current date
-        function setDate() {
-            const date = new Date();
-            const options = { month: 'long', day: 'numeric', year: 'numeric' };
-            document.getElementById('currentDate').textContent = date.toLocaleDateString('en-US', options);
-        }
+                    <div class="growing-grass">
+                        <div class="flower__grass flower__grass--1">
+                            <div class="flower__grass--top"></div>
+                            <div class="flower__grass--bottom"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+                            <div class="flower__grass__overlay"></div>
+                        </div>
+                    </div>
 
-        // Set daily message (sequential from shuffled array)
-        function setDailyMessage() {
-            // If we've shown all messages, reshuffle for next cycle
-            if (currentMessageIndex >= DAILY_MESSAGES.length) {
-                DAILY_MESSAGES = shuffleArray(DAILY_MESSAGES_ORIGINAL);
-                currentMessageIndex = 0;
-            }
-            const message = DAILY_MESSAGES[currentMessageIndex];
-            currentMessageIndex++;
-            document.getElementById('messageText').textContent = `"${message}"`;
-        }
+                    <div class="growing-grass">
+                        <div class="flower__grass flower__grass--2">
+                            <div class="flower__grass--top"></div>
+                            <div class="flower__grass--bottom"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+                            <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+                            <div class="flower__grass__overlay"></div>
+                        </div>
+                    </div>
 
-        // Entry validation
-        function validateEntry() {
-            const input = document.getElementById('nameInput');
-            const message = document.getElementById('entryMessage');
-            const enteredName = input.value.trim();
+                    <div class="grow-ans" style="--d:2.4s">
+                        <div class="flower__g-right flower__g-right--1">
+                            <div class="leaf"></div>
+                        </div>
+                    </div>
 
-            if (!enteredName) {
-                message.textContent = "Please, tell me who you are...";
-                message.style.opacity = '1';
-                return;
-            }
+                    <div class="grow-ans" style="--d:2.8s">
+                        <div class="flower__g-right flower__g-right--2">
+                            <div class="leaf"></div>
+                        </div>
+                    </div>
 
-            const normalizedInput = enteredName.toLowerCase();
-            const isAllowed = ALLOWED_NAMES.some(name => name.toLowerCase() === normalizedInput);
+                    <div class="grow-ans" style="--d:2.8s">
+                        <div class="flower__g-front">
+                            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
+                                <div class="flower__g-front__leaf"></div>
+                            </div>
+                            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
+                                <div class="flower__g-front__leaf"></div>
+                            </div>
+                            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3">
+                                <div class="flower__g-front__leaf"></div>
+                            </div>
+                            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4">
+                                <div class="flower__g-front__leaf"></div>
+                            </div>
+                            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5">
+                                <div class="flower__g-front__leaf"></div>
+                            </div>
+                            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6">
+                                <div class="flower__g-front__leaf"></div>
+                            </div>
+                            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7">
+                                <div class="flower__g-front__leaf"></div>
+                            </div>
+                            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8">
+                                <div class="flower__g-front__leaf"></div>
+                            </div>
+                            <div class="flower__g-front__line"></div>
+                        </div>
+                    </div>
 
-            if (isAllowed) {
-                // Success - transition to main experience
-                message.textContent = "Welcome home...";
-                message.style.color = 'rgba(200, 160, 160, 0.8)';
-                message.style.opacity = '1';
+                    <div class="grow-ans" style="--d:3.2s">
+                        <div class="flower__g-fr">
+                            <div class="leaf"></div>
+                            <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+                            <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+                            <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+                            <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+                            <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+                            <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+                            <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+                            <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+                        </div>
+                    </div>
 
-                setTimeout(() => {
-                    enterMainExperience(enteredName);
-                }, 800);
-            } else {
-                // Gentle rejection
-                const softRejections = [
-                    "This space wasn't made for you... but I hope you find yours somewhere.",
-                    "I'm sorry, this is a private place for someone special.",
-                    "Not every door is meant for everyone. Be well, stranger.",
-                    "This corner of the internet belongs to someone else. I wish you peace on your journey."
-                ];
-                message.textContent = softRejections[Math.floor(Math.random() * softRejections.length)];
-                message.style.opacity = '1';
-                input.value = '';
-            }
-        }
+                    <div class="long-g long-g--0">
+                        <div class="grow-ans" style="--d:3s">
+                            <div class="leaf leaf--0"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:2.2s">
+                            <div class="leaf leaf--1"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3.4s">
+                            <div class="leaf leaf--2"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3.6s">
+                            <div class="leaf leaf--3"></div>
+                        </div>
+                    </div>
 
-        // Enter main experience
-        function enterMainExperience(name) {
-            const entryScreen = document.getElementById('entryScreen');
-            const mainExperience = document.getElementById('mainExperience');
+                    <div class="long-g long-g--1">
+                        <div class="grow-ans" style="--d:3.6s">
+                            <div class="leaf leaf--0"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3.8s">
+                            <div class="leaf leaf--1"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4s">
+                            <div class="leaf leaf--2"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4.2s">
+                            <div class="leaf leaf--3"></div>
+                        </div>
+                    </div>
 
-            // Fade out entry
-            entryScreen.classList.add('fade-exit-active');
+                    <div class="long-g long-g--2">
+                        <div class="grow-ans" style="--d:4s">
+                            <div class="leaf leaf--0"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4.2s">
+                            <div class="leaf leaf--1"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4.4s">
+                            <div class="leaf leaf--2"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4.6s">
+                            <div class="leaf leaf--3"></div>
+                        </div>
+                    </div>
 
-            setTimeout(() => {
-                entryScreen.style.display = 'none';
-                mainExperience.style.opacity = '1';
-                mainExperience.style.pointerEvents = 'auto';
+                    <div class="long-g long-g--3">
+                        <div class="grow-ans" style="--d:4s">
+                            <div class="leaf leaf--0"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4.2s">
+                            <div class="leaf leaf--1"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3s">
+                            <div class="leaf leaf--2"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3.6s">
+                            <div class="leaf leaf--3"></div>
+                        </div>
+                    </div>
 
-                // Set personalized welcome
-                document.getElementById('welcomeName').textContent = name;
+                    <div class="long-g long-g--4">
+                        <div class="grow-ans" style="--d:4s">
+                            <div class="leaf leaf--0"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4.2s">
+                            <div class="leaf leaf--1"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3s">
+                            <div class="leaf leaf--2"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3.6s">
+                            <div class="leaf leaf--3"></div>
+                        </div>
+                    </div>
 
-                // Trigger entrance animations
-                document.querySelectorAll('.fade-enter').forEach((el, index) => {
-                    setTimeout(() => {
-                        el.classList.add('fade-enter-active');
-                    }, index * 150);
-                });
+                    <div class="long-g long-g--5">
+                        <div class="grow-ans" style="--d:4s">
+                            <div class="leaf leaf--0"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4.2s">
+                            <div class="leaf leaf--1"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3s">
+                            <div class="leaf leaf--2"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3.6s">
+                            <div class="leaf leaf--3"></div>
+                        </div>
+                    </div>
 
-                // Auto-play audio after interaction
-                setTimeout(() => {
-                    toggleAudio();
-                }, 1500);
+                    <div class="long-g long-g--6">
+                        <div class="grow-ans" style="--d:4.2s">
+                            <div class="leaf leaf--0"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4.4s">
+                            <div class="leaf leaf--1"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4.6s">
+                            <div class="leaf leaf--2"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:4.8s">
+                            <div class="leaf leaf--3"></div>
+                        </div>
+                    </div>
 
-            }, 800);
-        }
+                    <div class="long-g long-g--7">
+                        <div class="grow-ans" style="--d:3s">
+                            <div class="leaf leaf--0"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3.2s">
+                            <div class="leaf leaf--1"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3.5s">
+                            <div class="leaf leaf--2"></div>
+                        </div>
+                        <div class="grow-ans" style="--d:3.6s">
+                            <div class="leaf leaf--3"></div>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0" id="flowerHearts"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Audio toggle
-        let audioPlaying = false;
-        function toggleAudio() {
-            const audio = document.getElementById('ambientAudio');
-            const iconOff = document.getElementById('audioIconOff');
-            const iconOn = document.getElementById('audioIconOn');
+    <!-- Game 2: Love Game Layer -->
+    <div id="loveGamePage"
+        class="fixed inset-0 z-[60] opacity-0 pointer-events-none flex flex-col items-center justify-center p-6 bg-black/60 backdrop-blur-md transition-all duration-1000 overflow-hidden">
+        <!-- Close Button -->
+        <button onclick="closeLoveGame()"
+            class="absolute top-6 right-6 p-3 glass rounded-full hover:scale-110 transition-transform z-10">
+            <svg class="w-6 h-6 text-rose-300/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
 
-            if (audioPlaying) {
-                audio.pause();
-                iconOff.classList.remove('hidden');
-                iconOn.classList.add('hidden');
-            } else {
-                audio.play().catch(e => console.log('Audio play failed:', e));
-                iconOff.classList.add('hidden');
-                iconOn.classList.remove('hidden');
-            }
-            audioPlaying = !audioPlaying;
-        }
+        <div id="loveGameContent"
+            class="text-center w-full max-w-lg relative min-h-[400px] flex flex-col items-center justify-center">
 
-        // Emotion selection
-        function selectEmotion(emotion) {
-            // Update button states
-            document.querySelectorAll('.emotion-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`[data-emotion="${emotion}"]`).classList.add('active');
+            <h2 id="loveQuestion"
+                class="serif text-4xl md:text-5xl lg:text-6xl text-rose-100 text-glow mb-12 drop-shadow-[0_0_20px_rgba(250,169,181,0.4)] transition-all duration-700">
+                Do you love me? ❤️
+            </h2>
 
-            // Pick a random quote that isn't the same as the last one
-            const emotionData = EMOTION_CONTENT[emotion];
-            const quotes = emotionData.quotes;
-            let newIndex;
+            <div id="loveButtons"
+                class="flex flex-row justify-center items-center w-full h-24 transition-opacity duration-500 relative">
+                <!-- Yes Button -->
+                <button onclick="loveSayYes()"
+                    class="glass rounded-xl px-10 py-4 text-rose-300/90 serif text-2xl border border-rose-300/30 hover:bg-rose-900/40 transition-transform duration-300 hover:scale-110 shadow-[0_0_15px_rgba(250,169,181,0.2)] z-10 relative"
+                    style="margin-right: 120px;">
+                    Yes ❤️
+                </button>
 
-            do {
-                newIndex = Math.floor(Math.random() * quotes.length);
-            } while (newIndex === lastQuoteIndices[emotion] && quotes.length > 1);
+                <!-- No Button (Escaping) -->
+                <button id="loveBtnNo" onmouseover="moveNoButton()" onclick="moveNoButton()"
+                    class="glass-strong rounded-xl px-10 py-4 text-gray-400 serif text-2xl border border-white/5 absolute transition-all duration-300 ease-out"
+                    style="left: calc(50% + 10px);">
+                    No 😢
+                </button>
+            </div>
 
-            lastQuoteIndices[emotion] = newIndex;
-            const selectedQuote = quotes[newIndex];
+            <p id="loveMessage"
+                class="mt-8 serif text-xl md:text-2xl text-rose-200/80 italic h-8 transition-all duration-300 text-glow opacity-0">
+            </p>
+        </div>
 
-            // Show content with animation
-            const contentDiv = document.getElementById('emotionContent');
-            const textEl = document.getElementById('emotionText');
-            const tagEl = document.getElementById('emotionTag');
-            const supportEl = document.getElementById('emotionSupport');
-            const supportMsgEl = document.getElementById('supportMessage');
+        <!-- Footer Context -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none">
+            <p class="text-[10px] text-rose-300/40 tracking-widest uppercase italic">Playing with you, always ❤️</p>
+        </div>
 
-            // Reset states for fresh animation
-            contentDiv.classList.remove('hidden');
-            contentDiv.style.opacity = '0';
-            contentDiv.style.transform = 'translateY(10px)';
-            supportEl.style.opacity = '0';
-            supportEl.style.transform = 'translateY(10px)';
+        <!-- Hearts Container for end state -->
+        <div id="loveHeartsContainer" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+    </div>
 
-            // Update support message based on emotion
-            const supportMessages = {
-                sad: "im here sayang, come",
-                overthinking: "sokey baby I dekat sini kay",
-                anxious: "come baby sayang",
-                lost: "kita talk together kay baby"
-            };
-            supportMsgEl.textContent = supportMessages[emotion] || "I'm right here";
+    <!-- Tic Tac Toe Game Layer -->
+    <div id="ticTacToePage"
+        class="fixed inset-0 z-[60] opacity-0 pointer-events-none flex flex-col items-center justify-center p-6 bg-black/60 backdrop-blur-md transition-all duration-1000">
+        <!-- Close Button -->
+        <button onclick="closeTicTacToe()"
+            class="absolute top-6 right-6 p-3 glass rounded-full hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-rose-300/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
 
-            setTimeout(() => {
-                textEl.textContent = selectedQuote;
-                tagEl.textContent = emotionData.tag;
+        <!-- Container -->
+        <div class="max-w-md w-full flex flex-col items-center relative min-h-[400px] justify-center">
 
-                contentDiv.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-                contentDiv.style.opacity = '1';
-                contentDiv.style.transform = 'translateY(0)';
+            <!-- Phase 1: Selection -->
+            <div id="tttSelection"
+                class="text-center w-full transition-all duration-700 absolute inset-0 flex flex-col justify-center">
+                <h2 class="serif text-3xl md:text-4xl text-gray-100 text-glow mb-10 leading-relaxed">Baby nak jalan dulu
+                    ke I yang start dulu?❤️</h2>
+                <div class="flex flex-col gap-4">
+                    <button onclick="startTicTacToe('user')"
+                        class="w-full glass rounded-xl py-4 text-rose-300/90 serif text-xl border border-rose-300/20 hover:bg-rose-900/40 transition-all duration-500 hover:scale-105">baby
+                        nak start dulu</button>
+                    <button onclick="startTicTacToe('ai')"
+                        class="w-full glass rounded-xl py-4 text-purple-300/90 serif text-xl border border-purple-300/20 hover:bg-purple-900/40 transition-all duration-500 hover:scale-105">yayang
+                        jalan dulu</button>
+                </div>
+            </div>
 
-                // Fade in support button with extra delay
-                setTimeout(() => {
-                    supportEl.style.opacity = '1';
-                    supportEl.style.transform = 'translateY(0)';
-                }, 800);
+            <!-- Phase 2: Game Board -->
+            <div id="tttGame"
+                class="text-center w-full transition-all duration-700 opacity-0 pointer-events-none transform translate-y-8 absolute inset-0 flex flex-col justify-center">
+                <div class="mb-8 h-8">
+                    <p id="tttTurnIndicator"
+                        class="serif text-rose-300/80 text-lg tracking-widest uppercase transition-opacity">Your Turn
+                    </p>
+                </div>
 
-            }, 150);
+                <div class="grid grid-cols-3 gap-2 md:gap-3 mb-8 mx-auto w-fit">
+                    <button
+                        class="ttt-cell w-20 h-20 md:w-24 md:h-24 glass rounded-2xl flex items-center justify-center text-4xl md:text-5xl serif transition-all duration-500 hover:bg-rose-900/20"
+                        onclick="makeMove(0)"></button>
+                    <button
+                        class="ttt-cell w-20 h-20 md:w-24 md:h-24 glass rounded-2xl flex items-center justify-center text-4xl md:text-5xl serif transition-all duration-500 hover:bg-rose-900/20"
+                        onclick="makeMove(1)"></button>
+                    <button
+                        class="ttt-cell w-20 h-20 md:w-24 md:h-24 glass rounded-2xl flex items-center justify-center text-4xl md:text-5xl serif transition-all duration-500 hover:bg-rose-900/20"
+                        onclick="makeMove(2)"></button>
+                    <button
+                        class="ttt-cell w-20 h-20 md:w-24 md:h-24 glass rounded-2xl flex items-center justify-center text-4xl md:text-5xl serif transition-all duration-500 hover:bg-rose-900/20"
+                        onclick="makeMove(3)"></button>
+                    <button
+                        class="ttt-cell w-20 h-20 md:w-24 md:h-24 glass rounded-2xl flex items-center justify-center text-4xl md:text-5xl serif transition-all duration-500 hover:bg-rose-900/20"
+                        onclick="makeMove(4)"></button>
+                    <button
+                        class="ttt-cell w-20 h-20 md:w-24 md:h-24 glass rounded-2xl flex items-center justify-center text-4xl md:text-5xl serif transition-all duration-500 hover:bg-rose-900/20"
+                        onclick="makeMove(5)"></button>
+                    <button
+                        class="ttt-cell w-20 h-20 md:w-24 md:h-24 glass rounded-2xl flex items-center justify-center text-4xl md:text-5xl serif transition-all duration-500 hover:bg-rose-900/20"
+                        onclick="makeMove(6)"></button>
+                    <button
+                        class="ttt-cell w-20 h-20 md:w-24 md:h-24 glass rounded-2xl flex items-center justify-center text-4xl md:text-5xl serif transition-all duration-500 hover:bg-rose-900/20"
+                        onclick="makeMove(7)"></button>
+                    <button
+                        class="ttt-cell w-20 h-20 md:w-24 md:h-24 glass rounded-2xl flex items-center justify-center text-4xl md:text-5xl serif transition-all duration-500 hover:bg-rose-900/20"
+                        onclick="makeMove(8)"></button>
+                </div>
 
-            // Smooth scroll to content on mobile
-            if (window.innerWidth < 768) {
-                setTimeout(() => {
-                    contentDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 100);
-            }
-        }
+                <div id="tttResult"
+                    class="flex flex-col items-center gap-6 opacity-0 pointer-events-none transition-opacity duration-700 h-24">
+                    <p id="tttResultMessage" class="serif text-xl md:text-2xl text-rose-200 text-glow italic px-4"></p>
+                    <button onclick="resetTicTacToe()"
+                        class="glass rounded-xl px-8 py-3 text-white/80 text-sm tracking-widest uppercase hover:bg-white/10 transition-all group border border-white/5 hover:border-white/20">
+                        <span class="group-hover:scale-105 inline-block transition-transform duration-300">Play
+                            Again</span>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-        // Hidden message reveal
-        let heartClicks = 0;
-        let isBursting = false;
+        <!-- Footer Context -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 w-full text-center">
+            <p class="text-[10px] text-rose-300/40 tracking-widest uppercase italic">Playing with you, always ❤️</p>
+        </div>
+    </div>
 
-        function revealHiddenMessage() {
-            heartClicks++;
-            const heartButton = document.getElementById('heartButton');
-            const hiddenMessage = document.getElementById('hiddenMessage');
-
-            // Scale animation on click
-            heartButton.style.transform = 'scale(0.85)';
-            setTimeout(() => {
-                heartButton.style.transform = 'scale(1.2)';
-                setTimeout(() => {
-                    heartButton.style.transform = 'scale(1)';
-                }, 150);
-            }, 100);
-
-            // ALWAYS trigger the "Love Burst" for entertainment
-            triggerLoveBurst();
-
-            // Reveal message after 3 clicks
-            if (heartClicks >= 3 && !hiddenMessage.classList.contains('revealed')) {
-                hiddenMessage.classList.add('revealed');
-                heartButton.classList.remove('heartbeat');
-            }
-        }
-
-        function triggerLoveBurst() {
-            if (isBursting) return; // Prevent overlapping heavy animations
-            isBursting = true;
-
-            const body = document.body;
-            body.classList.add('screen-pulse');
-            setTimeout(() => body.classList.remove('screen-pulse'), 5000);
-
-            const emojis = ['💖', '✨', '🌸', '💝', '💗', '🎀', '♥️'];
-            const container = document.body;
-
-            for (let i = 0; i < 35; i++) {
-                setTimeout(() => {
-                    const el = document.createElement('div');
-                    el.className = 'serif love-burst-item';
-                    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-
-                    // Random starting position near the bottom
-                    const startX = Math.random() * 100;
-                    el.style.left = startX + 'vw';
-                    el.style.bottom = '-50px';
-
-                    // Random size and blur for depth
-                    const size = 15 + Math.random() * 25;
-                    el.style.fontSize = size + 'px';
-                    if (size < 20) el.style.filter = 'blur(1px)';
-
-                    // Random duration and delay
-                    el.style.animationDuration = (4 + Math.random() * 3) + 's';
-
-                    container.appendChild(el);
-
-                    setTimeout(() => el.remove(), 7000);
-                }, i * 100);
-            }
-
-            setTimeout(() => {
-                isBursting = false;
-            }, 5000);
-        }
-
-        // Enter key support
-        document.getElementById('nameInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                validateEntry();
-            }
-        });
-
-        // Initialize
-        createParticles();
-        setDate();
-        setDailyMessage();
-
-        // Add subtle parallax on mouse move (desktop only)
-        if (window.matchMedia('(pointer: fine)').matches) {
-            document.addEventListener('mousemove', (e) => {
-                const x = (e.clientX / window.innerWidth - 0.5) * 20;
-                const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-                document.querySelectorAll('.glass').forEach(el => {
-                    el.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
-                });
-            });
-        }
-    </script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
